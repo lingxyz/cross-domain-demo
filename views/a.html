@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page A</title>
+    <style>
+        div {
+            font-size: 100px;
+            margin-top: 200px;
+            text-align: center;
+            color: #ccc;
+        }
+        iframe {
+            width: 50%;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>page A</div>
+    <!-- <iframe src="http://localhost:3002" frameborder="0"></iframe> -->
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- <script>
+        window.addEventListener('message', function(e) {
+          console.log(e.data);
+        }, false);
+    </script> -->
+
+
+    <script>
+        $.ajax({
+            url: 'http://localhost:3000/api',
+            // url: '/api',
+            data: JSON.stringify({x:1}),
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            xhrFields: {
+                withCredentials: true    // 发送文档头信息
+            },
+            crossDomain: true,    // 允许跨域
+            success: function(data) {
+                console.log(data)
+            }
+        });
+    </script>
+</body>
+</html>
